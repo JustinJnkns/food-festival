@@ -20,33 +20,32 @@ const config = {
     rules: [
       {
         test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name(file) {
-                return '[path][name].[ext]';
-              },
-              publicPath: function(url) {
-                return url.replace('../', '/assets/');
-              }
-            }
-          },
-          {
-            loader: 'image-webpack-loader'
-          }
-        ]
-      }
-    ]
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name (file) {
+              return '[path][name].[ext]'
+            },
+            publicPath: function(url) {
+                return url.replace('../', '/assets/')
+            },
+          }  
+        }, 
+        {
+          loader: 'image-webpack-loader',
+        },
+      ],
+      },
+    ],
   },
   plugins: [
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery'
+        $: "jquery",
+        jQuery: "jquery"
     }),
     new BundleAnalyzerPlugin({
-      analyzerMode: 'static'
-    })
+      analyzerMode: "static"
+    }),
     // new WebpackPwaManifest({
     //   name: "Food Event",
     //   short_name: "Foodies",
@@ -62,7 +61,7 @@ const config = {
     //   }]
     // })
   ],
-  mode: 'development'
+  mode: "development"
 };
 
 module.exports = config;
